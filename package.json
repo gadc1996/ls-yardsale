@@ -1,0 +1,16 @@
+{
+  "name": "lsyardsale",
+  "version": "1.0.0",
+  "description": "lsyardsale wordpress theme",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Delgado",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglifycss": "^1.1.0"
+  }
+}
