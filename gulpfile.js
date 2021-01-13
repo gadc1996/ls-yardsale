@@ -1,0 +1,50 @@
+'use strict'
+
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var uglifycss = require('gulp-uglifycss');
+var rename = require('gulp-rename');
+var browserSync = require('browser-sync').create();
+
+sass.compiler = require('node-sass');
+
+//Refresh on html change
+function html() {
+	return gulp.src('./*.html')
+	.pipe(browserSync.stream());
+}
+
+//Turns sass insto css.min
+function css(){
+	gulp.src('./assets/sass/*.sass')
+	.pipe(sass())
+	.pipe(uglifycss())
+	//.pipe(rename('style.min.css'))
+	.pipe(gulp.dest('./'))
+	.pipe(browserSync.stream());
+}
+
+function server() {
+ 	browserSync.init({
+//Trabajando con contenido estatico
+//		server: {
+//			baseDir: '.'
+//		},
+// Trabajando con wordpress en localhost
+		proxy:'localhost/wordpress',
+		notify: false,
+  	browser: ["firefox"]
+  });
+	gulp.watch(['./assets/sass/*'], browserSync.reload);
+};
+
+function watchForBuildAssets() {
+    gulp.watch(['./*.html', './assets/sass/*', './src/js/*'], gulp.parallel('html', 'css'));
+}
+
+exports.html = html;
+exports.css = css;
+exports.watchForBuildAssets = watchForBuildAssets;
+exports.server = server;
+exports.default = gulp.parallel(this.server, this.watchForBuildAssets);
+
