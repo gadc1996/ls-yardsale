@@ -1,0 +1,43 @@
+<?php 
+	function cardRender(){?>
+		<div class="product-box">
+		<a href="<?php the_permalink(); ?>"><img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt=""></a>
+			<a href="<?php the_category(); ?>"><h3><?php echo the_title();?></h3></a>
+		</div>
+<?php 	
+	} 
+?>
+
+<?php 
+	function cardRowRender($maxPosts, $maxCardsPerRow, $category){ 
+		$args = array(
+			'posts_per_page' => $maxPosts,
+			'category_name' => $category,
+		);
+		$query = new WP_Query( $args );
+		if($query-> have_posts()){
+			$postCount = 0;
+?>
+			<div class="product-row">
+<?php
+			while($query-> have_posts()){
+				$query -> the_post();
+				if ($postCount < $maxCardsPerRow){
+					cardRender();
+					$postCount++;
+				}	
+				else{
+?>
+					</div>					
+					<div class="product-row">
+<?php
+					cardRender();
+					$postCount = 0;
+				}
+			}
+?>
+			</div>
+<?php
+		}
+	}
+?>

@@ -19,20 +19,20 @@ function css(){
 	gulp.src('./assets/sass/*.sass')
 	.pipe(sass())
 	.pipe(uglifycss())
-	//.pipe(rename('style.min.css'))
-	.pipe(gulp.dest('./'))
+	.pipe(rename('style.min.css'))
+	.pipe(gulp.dest('./assets/css'))
 	.pipe(browserSync.stream());
 }
 
 function server() {
  	browserSync.init({
 //Trabajando con contenido estatico
-//		server: {
-//			baseDir: '.'
-//		},
+		server: {
+			baseDir: '.'
+		},
 // Trabajando con wordpress en localhost
-		proxy:'localhost/wordpress',
-		notify: false,
+//		proxy:'localhost/wordpress',
+//		notify: false,
   	browser: ["firefox"]
   });
 	gulp.watch(['./assets/sass/*'], browserSync.reload);

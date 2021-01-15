@@ -16,10 +16,10 @@
 			<a href="#" class="nav-links">herramientas</a>
 			<a href="#" class="nav-links">contacto</a>
 		</nav>
-	</header>	
-	<section class="socials">
+		<section class="socials">
 			<a href="#"><img src="<?php echo get_bloginfo('template_url'); ?>/assets/img/045-facebook.svg" alt="" class="social-icon"></a>
 			<a href="#"><img src="<?php echo get_bloginfo('template_url'); ?>/assets/img/034-instagram.svg" alt="" class="social-icon"></a>
 			<a href="#"><img src="<?php echo get_bloginfo('template_url'); ?>/assets/img/013-twitter-1.svg" alt="" class="social-icon"></a>
 		</section>
+	</header>	
 

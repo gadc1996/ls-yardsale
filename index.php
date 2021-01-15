@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <title></title>
-	<link rel="stylesheet" href="assets/css/style.css" media="all">
-</head>
-<body>
-        
-</body>
-</html>
-
+<?php 
+	get_header(); 
+	include('modules/featured-section.php');
+	include('modules/products-section.php');
+	get_footer(); 
+?>
