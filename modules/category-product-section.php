@@ -10,6 +10,6 @@
 		cardRowRender($maxPosts = 8, $maxCardsPerRow= 4, $category);
 		}
 		wp_reset_postdata();
-?>
+?>	
 		</section>
 
